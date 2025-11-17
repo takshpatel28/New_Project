@@ -19,6 +19,18 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* BOMBAIM Special Header */
+.page-header.bombaim-header {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  box-shadow: 0 6px 12px rgba(255, 107, 53, 0.3);
+}
+
+.bombaim-indicator {
+  font-weight: 600;
+  color: #fff3cd;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 .page-header h1 {
   margin: 0;
   font-size: 24px;
@@ -153,6 +165,18 @@
   color: white;
 }
 
+.btn-bombaim {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  border: none;
+}
+
+.btn-bombaim:hover {
+  background: linear-gradient(135deg, #e55a2b 0%, #e08519 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -202,6 +226,27 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* BOMBAIM Table Row Styling */
+.mapping-table .bombaim-row {
+  background-color: #fff8f0;
+  border-left: 4px solid #ff6b35;
+}
+
+.mapping-table .bombaim-row:hover {
+  background-color: #ffe8d6;
+}
+
+.mapping-table .bombaim-code {
+  font-weight: 600;
+  color: #d84315;
+  background-color: #fff3e0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
 }
 
 .mapping-table th {

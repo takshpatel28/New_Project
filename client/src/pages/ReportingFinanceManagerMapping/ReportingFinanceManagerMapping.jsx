@@ -13,106 +13,143 @@ const ReportingFinanceManagerMapping = () => {
   const companies = ['BOMBAIM', 'DELHI', 'KOLKATA', 'CHENNAI', 'PUNE'];
   const searchOptions = ['Employee Code', 'Employee Name', 'Department', 'Designation'];
 
-  // Mock data for Reporting/Finance Manager Mapping
-  const [mappingData] = useState([
-    {
-      id: 1,
-      employeeCode: 'EMP001',
-      employeeName: 'Rajesh Kumar',
-      department: 'IT',
-      designation: 'Senior Software Engineer',
-      reportingManager: 'Suresh Sharma',
-      financeManager: 'Priya Patel',
-      mappingType: 'Reporting',
-      effectiveDate: '2024-01-01',
-      status: 'Active'
-    },
-    {
-      id: 2,
-      employeeCode: 'EMP002',
-      employeeName: 'Pooja Singh',
-      department: 'HR',
-      designation: 'HR Manager',
-      reportingManager: 'Anita Desai',
-      financeManager: 'Vikas Agarwal',
-      mappingType: 'Both',
-      effectiveDate: '2024-01-15',
-      status: 'Active'
-    },
-    {
-      id: 3,
-      employeeCode: 'EMP003',
-      employeeName: 'Amit Verma',
-      department: 'Finance',
-      designation: 'Accountant',
-      reportingManager: 'Vikas Agarwal',
-      financeManager: 'Vikas Agarwal',
-      mappingType: 'Finance',
-      effectiveDate: '2024-02-01',
-      status: 'Active'
-    },
-    {
-      id: 4,
-      employeeName: 'Neha Gupta',
-      employeeCode: 'EMP004',
-      department: 'Marketing',
-      designation: 'Marketing Executive',
-      reportingManager: 'Rahul Mehta',
-      financeManager: 'Priya Patel',
-      mappingType: 'Reporting',
-      effectiveDate: '2024-02-15',
-      status: 'Inactive'
-    },
-    {
-      id: 5,
-      employeeCode: 'EMP005',
-      employeeName: 'Sanjay Mishra',
-      department: 'IT',
-      designation: 'Team Lead',
-      reportingManager: 'Suresh Sharma',
-      financeManager: 'Vikas Agarwal',
-      mappingType: 'Both',
-      effectiveDate: '2024-03-01',
-      status: 'Active'
-    },
-    {
-      id: 6,
-      employeeCode: 'EMP006',
-      employeeName: 'Anjali Rao',
-      department: 'Operations',
-      designation: 'Operations Manager',
-      reportingManager: 'Ravi Kant',
-      financeManager: 'Vikas Agarwal',
-      mappingType: 'Reporting',
-      effectiveDate: '2024-03-10',
-      status: 'Active'
-    },
-    {
-      id: 7,
-      employeeCode: 'EMP007',
-      employeeName: 'Manoj Tiwari',
-      department: 'Sales',
-      designation: 'Sales Executive',
-      reportingManager: 'Rahul Mehta',
-      financeManager: 'Priya Patel',
-      mappingType: 'Both',
-      effectiveDate: '2024-03-20',
-      status: 'Active'
-    },
-    {
-      id: 8,
-      employeeCode: 'EMP008',
-      employeeName: 'Sunita Yadav',
-      department: 'HR',
-      designation: 'HR Executive',
-      reportingManager: 'Anita Desai',
-      financeManager: 'Vikas Agarwal',
-      mappingType: 'Reporting',
-      effectiveDate: '2024-04-01',
-      status: 'Inactive'
-    }
-  ]);
+  // Mock data for Reporting/Finance Manager Mapping with company-specific data
+  const [allMappingData] = useState({
+    BOMBAIM: [
+      {
+        id: 1,
+        employeeCode: 'BOM001',
+        employeeName: 'Rajesh Kumar',
+        department: 'IT',
+        designation: 'Senior Software Engineer',
+        reportingManager: 'Suresh Sharma',
+        financeManager: 'Priya Patel',
+        mappingType: 'Reporting',
+        effectiveDate: '2024-01-01',
+        status: 'Active'
+      },
+      {
+        id: 2,
+        employeeCode: 'BOM002',
+        employeeName: 'Pooja Singh',
+        department: 'HR',
+        designation: 'HR Manager',
+        reportingManager: 'Anita Desai',
+        financeManager: 'Vikas Agarwal',
+        mappingType: 'Both',
+        effectiveDate: '2024-01-15',
+        status: 'Active'
+      },
+      {
+        id: 3,
+        employeeCode: 'BOM003',
+        employeeName: 'Amit Verma',
+        department: 'Finance',
+        designation: 'Accountant',
+        reportingManager: 'Vikas Agarwal',
+        financeManager: 'Vikas Agarwal',
+        mappingType: 'Finance',
+        effectiveDate: '2024-02-01',
+        status: 'Active'
+      },
+      {
+        id: 4,
+        employeeName: 'Neha Gupta',
+        employeeCode: 'BOM004',
+        department: 'Marketing',
+        designation: 'Marketing Executive',
+        reportingManager: 'Rahul Mehta',
+        financeManager: 'Priya Patel',
+        mappingType: 'Reporting',
+        effectiveDate: '2024-02-15',
+        status: 'Inactive'
+      },
+      {
+        id: 5,
+        employeeCode: 'BOM005',
+        employeeName: 'Sanjay Mishra',
+        department: 'IT',
+        designation: 'Team Lead',
+        reportingManager: 'Suresh Sharma',
+        financeManager: 'Vikas Agarwal',
+        mappingType: 'Both',
+        effectiveDate: '2024-03-01',
+        status: 'Active'
+      }
+    ],
+    DELHI: [
+      {
+        id: 6,
+        employeeCode: 'DEL001',
+        employeeName: 'Anil Sharma',
+        department: 'Sales',
+        designation: 'Sales Manager',
+        reportingManager: 'Ravi Kant',
+        financeManager: 'Neha Gupta',
+        mappingType: 'Reporting',
+        effectiveDate: '2024-01-10',
+        status: 'Active'
+      },
+      {
+        id: 7,
+        employeeCode: 'DEL002',
+        employeeName: 'Sunita Verma',
+        department: 'Operations',
+        designation: 'Operations Executive',
+        reportingManager: 'Manoj Tiwari',
+        financeManager: 'Neha Gupta',
+        mappingType: 'Both',
+        effectiveDate: '2024-02-05',
+        status: 'Active'
+      }
+    ],
+    KOLKATA: [
+      {
+        id: 8,
+        employeeCode: 'KOL001',
+        employeeName: 'Ramesh Banerjee',
+        department: 'IT',
+        designation: 'Software Developer',
+        reportingManager: 'Amit Sen',
+        financeManager: 'Pooja Das',
+        mappingType: 'Finance',
+        effectiveDate: '2024-01-20',
+        status: 'Active'
+      }
+    ],
+    CHENNAI: [
+      {
+        id: 9,
+        employeeCode: 'CHE001',
+        employeeName: 'Karthik Rajan',
+        department: 'Finance',
+        designation: 'Senior Accountant',
+        reportingManager: 'Suresh Iyer',
+        financeManager: 'Lakshmi Narayan',
+        mappingType: 'Both',
+        effectiveDate: '2024-02-10',
+        status: 'Active'
+      }
+    ],
+    PUNE: [
+      {
+        id: 10,
+        employeeCode: 'PUN001',
+        employeeName: 'Vijay Patil',
+        department: 'Marketing',
+        designation: 'Marketing Head',
+        reportingManager: 'Rajesh Kulkarni',
+        financeManager: 'Anita Joshi',
+        mappingType: 'Reporting',
+        effectiveDate: '2024-03-15',
+        status: 'Active'
+      }
+    ]
+  });
 
+  // Get current company data
+  const mappingData = allMappingData[selectedCompany] || [];
+  
   // Filter data based on search criteria
   const filteredData = mappingData.filter(item => {
     if (!searchValue) return true;
@@ -175,10 +212,11 @@ const ReportingFinanceManagerMapping = () => {
 
   return (
     <div className="reporting-finance-mapping-container">
-      <div className="page-header">
+      <div className={`page-header ${selectedCompany === 'BOMBAIM' ? 'bombaim-header' : ''}`}>
         <h1>Reporting/Finance Manager Mapping</h1>
         <nav className="breadcrumb">
           <span>Master</span> &gt; <span>Reporting/Finance Manager Mapping</span>
+          {selectedCompany === 'BOMBAIM' && <span className="bombaim-indicator"> - BOMBAIM Selected</span>}
         </nav>
       </div>
 
@@ -274,8 +312,10 @@ const ReportingFinanceManagerMapping = () => {
               </thead>
               <tbody>
                 {currentItems.map((item) => (
-                  <tr key={item.id}>
-                    <td className="employee-code">{item.employeeCode}</td>
+                  <tr key={item.id} className={selectedCompany === 'BOMBAIM' ? 'bombaim-row' : ''}>
+                    <td className={`employee-code ${selectedCompany === 'BOMBAIM' ? 'bombaim-code' : ''}`}>
+                      {item.employeeCode}
+                    </td>
                     <td className="employee-name">{item.employeeName}</td>
                     <td className="department">{item.department}</td>
                     <td className="designation">{item.designation}</td>
@@ -295,7 +335,7 @@ const ReportingFinanceManagerMapping = () => {
                     <td>
                       <button
                         onClick={() => handleEdit(item.id)}
-                        className="btn btn-sm btn-primary"
+                        className={`btn btn-sm ${selectedCompany === 'BOMBAIM' ? 'btn-bombaim' : 'btn-primary'}`}
                       >
                         Edit
                       </button>
