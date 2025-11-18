@@ -48,6 +48,20 @@ import ManpowerBudget from './pages/Needs/ManpowerBudget';
 import TalentRegister from './pages/Needs/TalentRegister';
 import ManageCV from './pages/Needs/ManageCV';
 import SearchCV from './pages/Needs/SearchCV';
+import TRTracker from './pages/Needs/TRTracker';
+import UploadCandidateMaster from './pages/Needs/UploadCandidateMaster';
+import TalentAcquisition from './pages/Needs/TalentAcquisition';
+import TalentAcquisitionApproval from './pages/Needs/TalentAcquisitionApproval';
+import TalentAcquisitionManagerApproval from './pages/Needs/TalentAcquisitionManagerApproval';
+import HRViewTalentAcquisitions from './pages/Needs/HRViewTalentAcquisitions';
+import UploadPayrollMaster from './pages/Payroll/UploadPayrollMaster';
+import PayrollConfig from './pages/Payroll/PayrollConfig';
+import SalaryHeads from './pages/Payroll/SalaryHeads';
+import StatutorySettings from './pages/Payroll/StatutorySettings';
+import PreparePayroll from './pages/Payroll/PreparePayroll';
+import RunPayroll from './pages/Payroll/RunPayroll';
+import PostPayroll from './pages/Payroll/PostPayroll';
+import PayrollDashboard from './pages/Payroll/PayrollDashboard';
 
 function App() {
   return (
@@ -140,12 +154,23 @@ function App() {
               <Route path="/needs/talent-register" element={<TalentRegister />} />
               <Route path="/needs/manage-cv" element={<ManageCV />} />
               <Route path="/needs/search-cv" element={<SearchCV />} />
-              <Route path="/needs/tr-tracker" element={<NeedsPage title="TR Tracker" />} />
-              <Route path="/needs/upload-candidate-master" element={<NeedsPage title="Upload Candidate Master" />} />
-              <Route path="/needs/talent-acquisition" element={<NeedsPage title="Talent Acquisition" />} />
-              <Route path="/needs/talent-acquisition-approval" element={<NeedsPage title="Talent Acquisition Approval" />} />
-              <Route path="/needs/talent-acquisition-manager-approval" element={<NeedsPage title="Talent Acquisition Manager Approval" />} />
-              <Route path="/needs/hr-view-talent-acquisitions" element={<NeedsPage title="HR View Talent Acquisitions" />} />
+              <Route path="/needs/tr-tracker" element={<TRTracker />} />
+              <Route path="/needs/upload-candidate-master" element={<UploadCandidateMaster />} />
+              <Route path="/needs/talent-acquisition" element={<TalentAcquisition />} />
+              <Route path="/needs/talent-acquisition-approval" element={<TalentAcquisitionApproval />} />
+              <Route path="/needs/talent-acquisition-manager-approval" element={<TalentAcquisitionManagerApproval />} />
+              <Route path="/needs/hr-view-talent-acquisitions" element={<HRViewTalentAcquisitions />} />
+              {/* India Payroll Routes */}
+              <Route path="/payroll/india/upload" element={<UploadPayrollMaster />} />
+              <Route path="/payroll/india/config" element={<PayrollConfig />} />
+              <Route path="/payroll/india/salary-heads" element={<SalaryHeads />} />
+              <Route path="/payroll/india/statutory-settings" element={<StatutorySettings />} />
+              <Route path="/payroll/india/prepare" element={<PreparePayroll />} />
+              <Route path="/payroll/india/run" element={<RunPayroll />} />
+              <Route path="/payroll/india/post" element={<PostPayroll />} />
+              <Route path="/payroll/india/dashboard" element={<PayrollDashboard />} />
+              <Route path="/payroll/india/post" element={<NeedsPage title="Post Payroll" />} />
+              <Route path="/payroll/india/dashboard" element={<NeedsPage title="India Payroll Dashboard" />} />
               
               {/* Catch all route */}
               <Route path="*" element={<Navigate to="/home" replace />} />

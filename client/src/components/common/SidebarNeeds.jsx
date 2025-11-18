@@ -17,6 +17,8 @@ export default function SidebarNeeds() {
   const navigate = useNavigate();
   const location = useLocation();
   const [openPosition, setOpenPosition] = useState(false);
+  const [openSystem, setOpenSystem] = useState(false);
+  const [openIndiaPayroll, setOpenIndiaPayroll] = useState(false);
 
   const items = [
     // Position group is now a dropdown; its children are defined below
@@ -41,6 +43,67 @@ export default function SidebarNeeds() {
         </div>
 
         <div className="space-y-2">
+          {/* System & Support dropdown */}
+          <div>
+            <button
+              onClick={() => setOpenSystem(v => !v)}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-sm rounded-md border transition-colors ${
+                openSystem ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-700'
+              }`}
+            >
+              <span className="text-base">🧩</span>
+              <span className="text-left flex-1">System & Support</span>
+              <span className="text-xs">{openSystem ? '▾' : '▸'}</span>
+            </button>
+
+            {openSystem && (
+              <div className="mt-2 space-y-2 pl-8">
+                <NeedsItem label="Employees" to="#" icon="👥" active={false} onClick={() => {}} />
+                {/* India Payroll nested dropdown */}
+                <div>
+                  <button
+                    onClick={() => setOpenIndiaPayroll(v => !v)}
+                    className={`w-full flex items-center gap-3 px-4 py-3 text-sm rounded-md border transition-colors ${
+                      openIndiaPayroll ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-700'
+                    }`}
+                  >
+                    <span className="text-base">🇮🇳</span>
+                    <span className="text-left flex-1">India Payroll</span>
+                    <span className="text-xs">{openIndiaPayroll ? '▾' : '▸'}</span>
+                  </button>
+                  {openIndiaPayroll && (
+                    <div className="mt-2 space-y-1 pl-8">
+                      <div className="text-xs text-gray-500 mb-1">Master</div>
+                      <NeedsItem label="Payroll Config" to="/payroll/india/config" icon="⚙️" active={location.pathname === '/payroll/india/config'} onClick={() => navigate('/payroll/india/config')} />
+                      <NeedsItem label="Salary heads" to="/payroll/india/salary-heads" icon="⚙️" active={location.pathname === '/payroll/india/salary-heads'} onClick={() => navigate('/payroll/india/salary-heads')} />
+                      <NeedsItem label="Statutory Settings" to="/payroll/india/statutory-settings" icon="⚙️" active={location.pathname === '/payroll/india/statutory-settings'} onClick={() => navigate('/payroll/india/statutory-settings')} />
+                      <NeedsItem label="Prepare Payroll" to="/payroll/india/prepare" icon="⚙️" active={location.pathname === '/payroll/india/prepare'} onClick={() => navigate('/payroll/india/prepare')} />
+                      <NeedsItem label="Run Payroll" to="/payroll/india/run" icon="⚙️" active={location.pathname === '/payroll/india/run'} onClick={() => navigate('/payroll/india/run')} />
+                      <NeedsItem label="Post Payroll" to="/payroll/india/post" icon="⚙️" active={location.pathname === '/payroll/india/post'} onClick={() => navigate('/payroll/india/post')} />
+                      <NeedsItem label="Dashboard" to="/payroll/india/dashboard" icon="⚙️" active={location.pathname === '/payroll/india/dashboard'} onClick={() => navigate('/payroll/india/dashboard')} />
+                      <NeedsItem label="Upload" to="/payroll/india/upload" icon="⤴️" active={location.pathname === '/payroll/india/upload'} onClick={() => navigate('/payroll/india/upload')} />
+                    </div>
+                  )}
+                </div>
+
+                {/* Other systems (static placeholders) */}
+                <NeedsItem label="Nepal Payroll" to="#" icon="🇳🇵" active={false} onClick={() => {}} />
+                <NeedsItem label="Bangladesh Payroll" to="#" icon="🇧🇩" active={false} onClick={() => {}} />
+                <NeedsItem label="Shrilanka Payroll" to="#" icon="🇱🇰" active={false} onClick={() => {}} />
+                <NeedsItem label="Contractor Management" to="#" icon="🧑‍🔧" active={false} onClick={() => {}} />
+                <NeedsItem label="Vehicle Management" to="#" icon="🚗" active={false} onClick={() => {}} />
+                <NeedsItem label="Time Management" to="#" icon="⏱️" active={false} onClick={() => {}} />
+                <NeedsItem label="Training Kiosk" to="#" icon="🎓" active={false} onClick={() => {}} />
+                <NeedsItem label="Leave & Attendance" to="#" icon="🗓️" active={false} onClick={() => {}} />
+                <NeedsItem label="Visitor Management" to="#" icon="🧾" active={false} onClick={() => {}} />
+                <NeedsItem label="Access Management" to="#" icon="🔐" active={false} onClick={() => {}} />
+                <NeedsItem label="Performance Management" to="#" icon="📈" active={false} onClick={() => {}} />
+                <NeedsItem label="Learning Management" to="#" icon="📚" active={false} onClick={() => {}} />
+                <NeedsItem label="Travel Expense" to="#" icon="💼" active={false} onClick={() => {}} />
+              </div>
+            )}
+          </div>
+
           {/* Position dropdown */}
           <div>
             <button
