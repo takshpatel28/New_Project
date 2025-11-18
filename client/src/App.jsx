@@ -39,89 +39,119 @@ import AddEmployee from './pages/EmployeeMaster/AddEmployee';
 import UploadEmpMasterUpdate from './pages/UploadEmpMasterUpdate/UploadEmpMasterUpdate';
 import ReportingFinanceManagerMapping from './pages/ReportingFinanceManagerMapping/ReportingFinanceManagerMapping';
 import AddReportingFinanceMapping from './pages/ReportingFinanceManagerMapping/AddReportingFinanceMapping';
+import SidebarNeeds from './components/common/SidebarNeeds';
+import NeedsPage from './pages/Needs/NeedsPage';
+import Vendor from './pages/Needs/Vendor';
+import CVStatus from './pages/Needs/CVStatus';
+import Miscellaneous from './pages/Needs/Miscellaneous';
+import ManpowerBudget from './pages/Needs/ManpowerBudget';
+import TalentRegister from './pages/Needs/TalentRegister';
+import ManageCV from './pages/Needs/ManageCV';
+import SearchCV from './pages/Needs/SearchCV';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <main className="main-content min-h-screen bg-gray-50">
-        <Routes>
-          {/* Main Routes */}
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/companies" element={<CompanyMaster />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/city-master" element={<CityMaster />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/reports" element={<Reports />} />
-          
-          {/* Master Menu - Department Routes */}
-          <Route path="/master" element={<Navigate to="/master/departments" replace />} />
-          <Route path="/master/departments" element={<DepartmentList />} />
-          <Route path="/master/departments/new" element={<DepartmentForm />} />
-          <Route path="/master/departments/:id" element={<DepartmentDetail />} />
-          <Route path="/master/departments/:id/edit" element={<DepartmentEdit />} />
-          
-          {/* Master Menu - Designation Routes */}
-          <Route path="/master/designations" element={<DesignationList />} />
-          <Route path="/master/designations/bombaim" element={<DesignationDetail />} />
-          <Route path="/master/designations/:id" element={<DesignationDetail />} />
-          <Route path="/master/designations/edit/:id" element={<DesignationEdit />} />
+        <div className="flex">
+          <SidebarNeeds />
+          <div className="flex-1">
+            <Routes>
+              {/* Main Routes */}
+              <Route path="/" element={<Navigate to="/home" replace />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/companies" element={<CompanyMaster />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/city-master" element={<CityMaster />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/reports" element={<Reports />} />
+              
+              {/* Master Menu - Department Routes */}
+              <Route path="/master" element={<Navigate to="/master/departments" replace />} />
+              <Route path="/master/departments" element={<DepartmentList />} />
+              <Route path="/master/departments/new" element={<DepartmentForm />} />
+              <Route path="/master/departments/:id" element={<DepartmentDetail />} />
+              <Route path="/master/departments/:id/edit" element={<DepartmentEdit />} />
+              
+              {/* Master Menu - Designation Routes */}
+              <Route path="/master/designations" element={<DesignationList />} />
+              <Route path="/master/designations/bombaim" element={<DesignationDetail />} />
+              <Route path="/master/designations/:id" element={<DesignationDetail />} />
+              <Route path="/master/designations/edit/:id" element={<DesignationEdit />} />
+  
+              {/* Master Menu - Holiday Master Routes */}
+              <Route path="/master/holiday-master" element={<HolidayList />} />
+              <Route path="/master/holiday-master/new" element={<HolidayNew />} />
+              <Route path="/master/holiday-master/edit/:id" element={<HolidayEdit />} />
+  
+              {/* Master Menu - Entity Master Routes */}
+              <Route path="/master/entity-master" element={<EntityMaster />} />
+              <Route path="/master/entity-master/edit/:id" element={<EntityEdit />} />
+  
+              {/* Master Menu - Qualification Master Routes */}
+              <Route path="/master/qualification-master" element={<QualificationMaster />} />
+              <Route path="/master/qualification-master/new" element={<QualificationNew />} />
+              <Route path="/master/qualification-master/edit/:id" element={<QualificationEdit />} />
+  
+              {/* Master Menu - State Master Routes */}
+              <Route path="/master/state-master" element={<StateMaster />} />
+              <Route path="/country-master" element={<CountryMaster />} />
+              <Route path="/bank-master" element={<BankMaster />} />
+              <Route path="/add-bank" element={<AddBank />} />
+              <Route path="/edit-bank/:id" element={<AddBank />} />
+              
+              {/* Policy Upload Routes */}
+              <Route path="/policy-upload" element={<PolicyUpload />} />
+              <Route path="/add-policy" element={<AddPolicy />} />
+              <Route path="/edit-policy/:id" element={<AddPolicy />} />
+              
+              {/* Ticker Master Routes */}
+              <Route path="/ticker-master" element={<TickerMaster />} />
+              <Route path="/add-ticker" element={<AddTicker />} />
+              <Route path="/edit-ticker/:id" element={<AddTicker />} />
+              
+              {/* Event Planner Routes */}
+              <Route path="/event-planner" element={<EventPlanner />} />
+              <Route path="/add-event" element={<AddEvent />} />
+              <Route path="/edit-event/:id" element={<AddEvent />} />
+              
+              {/* Employee Master Routes */}
+              <Route path="/employee-master" element={<EmployeeMaster />} />
+              <Route path="/add-employee" element={<AddEmployee />} />
+              <Route path="/edit-employee/:id" element={<AddEmployee />} />
+              
+              {/* Upload Emp Master Update Routes */}
+              <Route path="/upload-emp-master-update" element={<UploadEmpMasterUpdate />} />
+              
+              {/* Reporting/Finance Manager Mapping Routes */}
+              <Route path="/reporting-finance-manager-mapping" element={<ReportingFinanceManagerMapping />} />
+              <Route path="/add-reporting-finance-mapping" element={<AddReportingFinanceMapping />} />
+              <Route path="/edit-reporting-finance-mapping/:id" element={<AddReportingFinanceMapping />} />
 
-          {/* Master Menu - Holiday Master Routes */}
-          <Route path="/master/holiday-master" element={<HolidayList />} />
-          <Route path="/master/holiday-master/new" element={<HolidayNew />} />
-          <Route path="/master/holiday-master/edit/:id" element={<HolidayEdit />} />
-
-          {/* Master Menu - Entity Master Routes */}
-          <Route path="/master/entity-master" element={<EntityMaster />} />
-          <Route path="/master/entity-master/edit/:id" element={<EntityEdit />} />
-
-          {/* Master Menu - Qualification Master Routes */}
-          <Route path="/master/qualification-master" element={<QualificationMaster />} />
-          <Route path="/master/qualification-master/new" element={<QualificationNew />} />
-          <Route path="/master/qualification-master/edit/:id" element={<QualificationEdit />} />
-
-          {/* Master Menu - State Master Routes */}
-          <Route path="/master/state-master" element={<StateMaster />} />
-          <Route path="/country-master" element={<CountryMaster />} />
-          <Route path="/bank-master" element={<BankMaster />} />
-          <Route path="/add-bank" element={<AddBank />} />
-          <Route path="/edit-bank/:id" element={<AddBank />} />
-          
-          {/* Policy Upload Routes */}
-          <Route path="/policy-upload" element={<PolicyUpload />} />
-          <Route path="/add-policy" element={<AddPolicy />} />
-          <Route path="/edit-policy/:id" element={<AddPolicy />} />
-          
-          {/* Ticker Master Routes */}
-          <Route path="/ticker-master" element={<TickerMaster />} />
-          <Route path="/add-ticker" element={<AddTicker />} />
-          <Route path="/edit-ticker/:id" element={<AddTicker />} />
-          
-          {/* Event Planner Routes */}
-          <Route path="/event-planner" element={<EventPlanner />} />
-          <Route path="/add-event" element={<AddEvent />} />
-          <Route path="/edit-event/:id" element={<AddEvent />} />
-          
-          {/* Employee Master Routes */}
-          <Route path="/employee-master" element={<EmployeeMaster />} />
-          <Route path="/add-employee" element={<AddEmployee />} />
-          <Route path="/edit-employee/:id" element={<AddEmployee />} />
-          
-          {/* Upload Emp Master Update Routes */}
-          <Route path="/upload-emp-master-update" element={<UploadEmpMasterUpdate />} />
-          
-          {/* Reporting/Finance Manager Mapping Routes */}
-          <Route path="/reporting-finance-manager-mapping" element={<ReportingFinanceManagerMapping />} />
-          <Route path="/add-reporting-finance-mapping" element={<AddReportingFinanceMapping />} />
-          <Route path="/edit-reporting-finance-mapping/:id" element={<AddReportingFinanceMapping />} />
-          
-          {/* Catch all route */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
-        </Routes>
+              {/* Needs Routes */}
+              <Route path="/needs/position" element={<NeedsPage title="Position" />} />
+              <Route path="/needs/vendor" element={<Vendor />} />
+              <Route path="/needs/cv-status" element={<CVStatus />} />
+              <Route path="/needs/miscellaneous" element={<Miscellaneous />} />
+              <Route path="/needs/manpower-budget" element={<ManpowerBudget />} />
+              <Route path="/needs/talent-register" element={<TalentRegister />} />
+              <Route path="/needs/manage-cv" element={<ManageCV />} />
+              <Route path="/needs/search-cv" element={<SearchCV />} />
+              <Route path="/needs/tr-tracker" element={<NeedsPage title="TR Tracker" />} />
+              <Route path="/needs/upload-candidate-master" element={<NeedsPage title="Upload Candidate Master" />} />
+              <Route path="/needs/talent-acquisition" element={<NeedsPage title="Talent Acquisition" />} />
+              <Route path="/needs/talent-acquisition-approval" element={<NeedsPage title="Talent Acquisition Approval" />} />
+              <Route path="/needs/talent-acquisition-manager-approval" element={<NeedsPage title="Talent Acquisition Manager Approval" />} />
+              <Route path="/needs/hr-view-talent-acquisitions" element={<NeedsPage title="HR View Talent Acquisitions" />} />
+              
+              {/* Catch all route */}
+              <Route path="*" element={<Navigate to="/home" replace />} />
+            </Routes>
+          </div>
+        </div>
       </main>
     </div>
   );

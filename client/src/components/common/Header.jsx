@@ -23,6 +23,23 @@ const Header = () => {
         'Country Master',
         'Bank Master'
       ],
+      // Minimal Needs submenu
+      'Needs': [
+        'Position',
+        'Vendor',
+        'CV Status',
+        'Miscellaneous',
+        'Manpower Budget',
+        'Talent Register',
+        'Manage CV',
+        'Search CV',
+        'TR Tracker',
+        'Upload Candidate Master',
+        'Talent Acquisition',
+        'Talent Acquisition Approval',
+        'Talent Acquisition Manager Approval',
+        'HR View Talent Acquisitions'
+      ],
       'Ticker Message': null,
       'Event Planner': null,
       'Policy Upload': null,
@@ -147,6 +164,34 @@ const Header = () => {
                               navigate('/bank-master');
                             } else if (subItem === 'Ticker Message') {
                               navigate('/ticker-master');
+                            } else if (subItem === 'Position') {
+                              navigate('/needs/position');
+                            } else if (subItem === 'Vendor') {
+                              navigate('/needs/vendor');
+                            } else if (subItem === 'CV Status') {
+                              navigate('/needs/cv-status');
+                            } else if (subItem === 'Miscellaneous') {
+                              navigate('/needs/miscellaneous');
+                            } else if (subItem === 'Manpower Budget') {
+                              navigate('/needs/manpower-budget');
+                            } else if (subItem === 'Talent Register') {
+                              navigate('/needs/talent-register');
+                            } else if (subItem === 'Manage CV') {
+                              navigate('/needs/manage-cv');
+                            } else if (subItem === 'Search CV') {
+                              navigate('/needs/search-cv');
+                            } else if (subItem === 'TR Tracker') {
+                              navigate('/needs/tr-tracker');
+                            } else if (subItem === 'Upload Candidate Master') {
+                              navigate('/needs/upload-candidate-master');
+                            } else if (subItem === 'Talent Acquisition') {
+                              navigate('/needs/talent-acquisition');
+                            } else if (subItem === 'Talent Acquisition Approval') {
+                              navigate('/needs/talent-acquisition-approval');
+                            } else if (subItem === 'Talent Acquisition Manager Approval') {
+                              navigate('/needs/talent-acquisition-manager-approval');
+                            } else if (subItem === 'HR View Talent Acquisitions') {
+                              navigate('/needs/hr-view-talent-acquisitions');
                             }
                           }}
                         >
