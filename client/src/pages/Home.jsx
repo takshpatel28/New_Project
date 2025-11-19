@@ -26,7 +26,7 @@ const Home = () => {
 
           <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
             <div className="text-green-600 text-4xl mb-4">📊</div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dashboard</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2 no-underline">Dashboard</h3>
             <p className="text-gray-600 mb-4">View analytics and key metrics at a glance</p>
             <Link to="/dashboard" className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
               Go to Dashboard

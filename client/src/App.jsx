@@ -62,6 +62,28 @@ import PreparePayroll from './pages/Payroll/PreparePayroll';
 import RunPayroll from './pages/Payroll/RunPayroll';
 import PostPayroll from './pages/Payroll/PostPayroll';
 import PayrollDashboard from './pages/Payroll/PayrollDashboard';
+import BiometricUpload from './pages/TALV/CaptureAttendance/BiometricUpload';
+import ImportAttendance from './pages/TALV/CaptureAttendance/ImportAttendance';
+import ImportInOutTime from './pages/TALV/CaptureAttendance/ImportInOutTime';
+import ShiftPunchRegister from './pages/TALV/AttendanceReports/ShiftPunchRegister';
+import AttendanceRegister from './pages/TALV/AttendanceReports/AttendanceRegister';
+import OverTimeCompOff from './pages/TALV/AttendanceReports/OverTimeCompOff';
+import ShiftPlanRegister from './pages/TALV/AttendanceReports/ShiftPlanRegister';
+import ShiftDeviationRegister from './pages/TALV/AttendanceReports/ShiftDeviationRegister';
+import AbscondingReport from './pages/TALV/AttendanceReports/AbscondingReport';
+import OTSummary from './pages/TALV/AttendanceReports/OTSummary';
+import HeadcountOccupancyReport from './pages/TALV/AttendanceReports/HeadcountOccupancyReport';
+import AttendanceDashboard from './pages/TALV/AttendanceDashboard';
+import AttendancePolicyMaster from './pages/TALV/AttendancePolicyMaster';
+import LeavePolicyConfig from './pages/TALV/LeavePolicyConfig';
+import EmployeeLeaveMaster from './pages/TALV/EmployeeLeaveMaster';
+import UploadOpeningLeaveBalance from './pages/TALV/UploadOpeningLeaveBalance';
+import MobileAppLinking from './pages/TALV/MobileAppLinking';
+import AttendanceControl from './pages/TALV/AttendanceControl';
+import ShiftPlanningUpload from './pages/TALV/ShiftPlanningUpload';
+import ShiftMaster from './pages/TALV/ShiftMaster';
+import HRViewLeavesOutdoor from './pages/TALV/HRViewLeavesOutdoor';
+import UploadMonthlyLeaveBalance from './pages/TALV/UploadMonthlyLeaveBalance';
 
 function App() {
   return (
@@ -169,8 +191,33 @@ function App() {
               <Route path="/payroll/india/run" element={<RunPayroll />} />
               <Route path="/payroll/india/post" element={<PostPayroll />} />
               <Route path="/payroll/india/dashboard" element={<PayrollDashboard />} />
-              <Route path="/payroll/india/post" element={<NeedsPage title="Post Payroll" />} />
-              <Route path="/payroll/india/dashboard" element={<NeedsPage title="India Payroll Dashboard" />} />
+
+              <Route path="/talv/attendance-dashboard" element={<AttendanceDashboard />} />
+              <Route path="/talv/attendance-policy" element={<AttendancePolicyMaster />} />
+              <Route path="/talv/leave-policy-config" element={<LeavePolicyConfig />} />
+              <Route path="/talv/employee-leave-master" element={<EmployeeLeaveMaster />} />
+              <Route path="/talv/upload-opening-leave-balance" element={<UploadOpeningLeaveBalance />} />
+              <Route path="/talv/mobile-app-linking" element={<MobileAppLinking />} />
+              <Route path="/talv/attendance-control" element={<AttendanceControl />} />
+              <Route path="/talv/shift-planning-upload" element={<ShiftPlanningUpload />} />
+              <Route path="/talv/shift-master" element={<ShiftMaster />} />
+              <Route path="/talv/hr-view-leaves-outdoor" element={<HRViewLeavesOutdoor />} />
+              <Route path="/talv/upload-monthly-leave-balance" element={<UploadMonthlyLeaveBalance />} />
+
+              <Route path="/talv/capture-attendance/biometric-upload" element={<BiometricUpload />} />
+              <Route path="/talv/capture-attendance/import-attendance" element={<ImportAttendance />} />
+              <Route path="/talv/capture-attendance/import-in-out-time" element={<ImportInOutTime />} />
+              <Route path="/talv/capture-attendance/client-emp-import-attendance" element={<NeedsPage title="Client Emp Import Attendance" />} />
+
+              <Route path="/talv/attendance-reports/shift-punch-register" element={<ShiftPunchRegister />} />
+              <Route path="/talv/attendance-reports/attendance-register" element={<AttendanceRegister />} />
+              <Route path="/talv/attendance-reports/client-emp-attendance-register" element={<NeedsPage title="Client Emp Attendance Register" />} />
+              <Route path="/talv/attendance-reports/over-time-comp-off" element={<OverTimeCompOff />} />
+              <Route path="/talv/attendance-reports/shift-plan-register" element={<ShiftPlanRegister />} />
+              <Route path="/talv/attendance-reports/shift-deviation-register" element={<ShiftDeviationRegister />} />
+              <Route path="/talv/attendance-reports/absconding-report" element={<AbscondingReport />} />
+              <Route path="/talv/attendance-reports/ot-summary" element={<OTSummary />} />
+              <Route path="/talv/attendance-reports/headcount-occupancy-report" element={<HeadcountOccupancyReport />} />
               
               {/* Catch all route */}
               <Route path="*" element={<Navigate to="/home" replace />} />

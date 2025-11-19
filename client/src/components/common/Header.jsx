@@ -73,34 +73,48 @@ const Header = () => {
       'Letter Designer': null,
       'Letters Audit Trail': null
     },
-    'TA & LV': [
-      'Leave Application',
-      'Leave Approval',
-      'Leave Balance',
-      'Leave History',
-      'Travel Request',
-      'Travel Approval',
-      'Travel Reimbursement',
-      'Travel History',
-      'Expense Claim',
-      'Expense Approval',
-      'Expense History',
-      'Advance Request',
-      'Advance Approval',
-      'Advance Adjustment'
-    ]
+    'TA & LV': {
+      'Capture Attendance': [
+        'Biometric Upload',
+        'Import Attendance',
+        'Import In Out Time',
+        'Client Emp Import Attendance'
+      ],
+      'Attendance Reports': [
+        'Shift Punch Register',
+        'Attendance Register',
+        'Client Emp Attendance Register',
+        'Over Time/Comp-Off',
+        'Shift Plan Register',
+        'Shift Deviation Register',
+        'Absconding Report',
+        'OT Summary',
+        'Headcount/Occupancy Report'
+      ],
+      'Attendance Dashboard': null,
+      'Attendance Policy': null,
+      'Leave Policy Config': null,
+      'Employee Leave Master': null,
+      'Upload Opening Leave Balance': null,
+      'Mobile App Linking': null,
+      'Attendance Control': null,
+      'Shift Planning Upload': null,
+      'Shift Master': null,
+      'HR View Leaves & Outdoor': null,
+      'Upload Monthly Leave Balance': null
+    }
   };
 
   return (
-    <header className="bg-white shadow-md p-4 flex justify-between items-center relative">
-      <Link to="/home" className="text-xl font-bold text-gray-800 hover:text-orange-500 transition-colors">
+    <header className="bg-white px-4 py-3 flex justify-between items-center relative">
+      <Link to="/home" className="no-underline text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors">
         Dash Board
       </Link>
-      <div className="flex items-center space-x-8 text-gray-600">
+      <div className="flex items-center space-x-6 text-gray-700">
         {/* Master Menu with Hover */}
         <div className="relative">
           <div 
-            className="cursor-pointer hover:text-orange-500" 
+            className="cursor-pointer hover:text-blue-600" 
             onMouseEnter={() => setHoveredMenu('Master')}
             onMouseLeave={() => setHoveredMenu(null)}
           >
@@ -108,14 +122,14 @@ const Header = () => {
           </div>
           {hoveredMenu === 'Master' && (
             <div 
-              className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-64 z-10 border"
+              className="absolute top-full left-0 bg-white shadow-sm rounded-md py-2 w-56 z-10 border border-gray-200"
               onMouseEnter={() => setHoveredMenu('Master')}
               onMouseLeave={() => setHoveredMenu(null)}
             >
               {Object.entries(menuItems.Master).map(([itemName, subItems]) => (
                 <div key={itemName} className="relative group">
                   <div 
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm flex justify-between items-center"
+                    className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm flex justify-between items-center"
                     onClick={() => {
                       if (itemName === 'Ticker Message') {
                         navigate('/ticker-master');
@@ -133,14 +147,14 @@ const Header = () => {
                     }}
                   >
                     {itemName}
-                    {subItems && <span className="text-xs">▶</span>}
+                    {subItems && <span className="text-xs text-gray-400">▶</span>}
                   </div>
                   {subItems && (
-                    <div className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 w-64 z-20 border hidden group-hover:block">
+                    <div className="absolute left-full top-0 bg-white shadow-sm rounded-md py-2 w-56 z-20 border border-gray-200 hidden group-hover:block">
                       {subItems.map((subItem, subIndex) => (
                         <div 
                           key={subIndex} 
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                          className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm"
                           onClick={() => {
                             if (subItem === 'Company') {
                               navigate('/companies');
@@ -209,7 +223,7 @@ const Header = () => {
         {/* ELC & Letters Menu */}
         <div className="relative">
           <div 
-            className="cursor-pointer hover:text-orange-500" 
+            className="cursor-pointer hover:text-blue-600" 
             onMouseEnter={() => setHoveredELC(true)}
             onMouseLeave={() => setHoveredELC(false)}
           >
@@ -217,20 +231,20 @@ const Header = () => {
           </div>
           {hoveredELC && (
             <div 
-              className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-64 z-10 border"
+              className="absolute top-full left-0 bg-white shadow-sm rounded-md py-2 w-56 z-10 border border-gray-200"
               onMouseEnter={() => setHoveredELC(true)}
               onMouseLeave={() => setHoveredELC(false)}
             >
               {Object.entries(menuItems['ELC & Letters']).map(([itemName, subItems]) => (
                 <div key={itemName} className="relative group">
-                  <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm flex justify-between items-center">
+                  <div className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm flex justify-between items-center">
                     {itemName}
-                    {subItems && <span className="text-xs">▶</span>}
+                    {subItems && <span className="text-xs text-gray-400">▶</span>}
                   </div>
                   {subItems && (
-                    <div className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 w-64 z-20 border hidden group-hover:block">
+                    <div className="absolute left-full top-0 bg-white shadow-sm rounded-md py-2 w-56 z-20 border border-gray-200 hidden group-hover:block">
                       {subItems.map((subItem, subIndex) => (
-                        <div key={subIndex} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm">
+                        <div key={subIndex} className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm">
                           {subItem}
                         </div>
                       ))}
@@ -245,7 +259,7 @@ const Header = () => {
         {/* TA & LV Menu */}
         <div className="relative">
           <div 
-            className="cursor-pointer hover:text-orange-500" 
+            className="cursor-pointer hover:text-blue-600" 
             onMouseEnter={() => setHoveredTALV(true)}
             onMouseLeave={() => setHoveredTALV(false)}
           >
@@ -253,25 +267,85 @@ const Header = () => {
           </div>
           {hoveredTALV && (
             <div 
-              className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-64 z-10 border"
+              className="absolute top-full left-0 bg-white shadow-sm rounded-md py-2 w-56 z-10 border border-gray-200"
               onMouseEnter={() => setHoveredTALV(true)}
               onMouseLeave={() => setHoveredTALV(false)}
             >
-              {menuItems['TA & LV'].map((item, index) => (
-                <div key={index} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm">
-                  {item}
+              {Object.entries(menuItems['TA & LV']).map(([itemName, subItems]) => (
+                <div key={itemName} className="relative group">
+                  <div 
+                    className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm flex justify-between items-center"
+                    onClick={() => {
+                      if (itemName === 'Attendance Dashboard') {
+                        navigate('/talv/attendance-dashboard');
+                      } else if (itemName === 'Attendance Policy') {
+                        navigate('/talv/attendance-policy');
+                      } else if (itemName === 'Leave Policy Config') {
+                        navigate('/talv/leave-policy-config');
+                      } else if (itemName === 'Employee Leave Master') {
+                        navigate('/talv/employee-leave-master');
+                      } else if (itemName === 'Upload Opening Leave Balance') {
+                        navigate('/talv/upload-opening-leave-balance');
+                      } else if (itemName === 'Mobile App Linking') {
+                        navigate('/talv/mobile-app-linking');
+                      } else if (itemName === 'Attendance Control') {
+                        navigate('/talv/attendance-control');
+                      } else if (itemName === 'Shift Planning Upload') {
+                        navigate('/talv/shift-planning-upload');
+                      } else if (itemName === 'Shift Master') {
+                        navigate('/talv/shift-master');
+                      } else if (itemName === 'HR View Leaves & Outdoor') {
+                        navigate('/talv/hr-view-leaves-outdoor');
+                      } else if (itemName === 'Upload Monthly Leave Balance') {
+                        navigate('/talv/upload-monthly-leave-balance');
+                      }
+                    }}
+                  >
+                    {itemName}
+                    {subItems && <span className="text-xs text-gray-400">▶</span>}
+                  </div>
+                  {subItems && (
+                    <div className="absolute left-full top-0 bg-white shadow-sm rounded-md py-2 w-56 z-20 border border-gray-200 hidden group-hover:block">
+                      {subItems.map((subItem, subIndex) => (
+                        <div 
+                          key={subIndex} 
+                          className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm"
+                          onClick={() => {
+                            if (itemName === 'Capture Attendance') {
+                              if (subItem === 'Biometric Upload') navigate('/talv/capture-attendance/biometric-upload');
+                              else if (subItem === 'Import Attendance') navigate('/talv/capture-attendance/import-attendance');
+                              else if (subItem === 'Import In Out Time') navigate('/talv/capture-attendance/import-in-out-time');
+                              else if (subItem === 'Client Emp Import Attendance') navigate('/talv/capture-attendance/client-emp-import-attendance');
+                            } else if (itemName === 'Attendance Reports') {
+                              if (subItem === 'Shift Punch Register') navigate('/talv/attendance-reports/shift-punch-register');
+                              else if (subItem === 'Attendance Register') navigate('/talv/attendance-reports/attendance-register');
+                              else if (subItem === 'Client Emp Attendance Register') navigate('/talv/attendance-reports/client-emp-attendance-register');
+                              else if (subItem === 'Over Time/Comp-Off') navigate('/talv/attendance-reports/over-time-comp-off');
+                              else if (subItem === 'Shift Plan Register') navigate('/talv/attendance-reports/shift-plan-register');
+                              else if (subItem === 'Shift Deviation Register') navigate('/talv/attendance-reports/shift-deviation-register');
+                              else if (subItem === 'Absconding Report') navigate('/talv/attendance-reports/absconding-report');
+                              else if (subItem === 'OT Summary') navigate('/talv/attendance-reports/ot-summary');
+                              else if (subItem === 'Headcount/Occupancy Report') navigate('/talv/attendance-reports/headcount-occupancy-report');
+                            }
+                          }}
+                        >
+                          {subItem}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        <Link to="/dashboard" className="cursor-pointer hover:text-orange-500 transition-colors">Dashboard</Link>
-        <Link to="/companies" className="cursor-pointer hover:text-orange-500 transition-colors">Companies</Link>
-        <Link to="/settings" className="cursor-pointer hover:text-orange-500 transition-colors">Settings</Link>
-        <Link to="/reports" className="cursor-pointer hover:text-orange-500 transition-colors">Reports</Link>
-        <Link to="/about" className="cursor-pointer hover:text-orange-500 transition-colors">About</Link>
-        <Link to="/contact" className="cursor-pointer hover:text-orange-500 transition-colors">Contact</Link>
+        <Link to="/dashboard" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">Dashboard</Link>
+        <Link to="/companies" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">Companies</Link>
+        <Link to="/settings" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">Settings</Link>
+        <Link to="/reports" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">Reports</Link>
+        <Link to="/about" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">About</Link>
+        <Link to="/contact" className="no-underline text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">Contact</Link>
       </div>
     </header>
   );
