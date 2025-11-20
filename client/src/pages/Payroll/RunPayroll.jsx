@@ -15,8 +15,8 @@ export default function RunPayroll() {
   const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
   const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
-  const companies = ['Company 1','Company 2'];
-  const workingFors = ['Self','Client'];
+  const companies = ['BOMBAIM','Company 1','Company 2'];
+  const workingFors = ['ALL','Self','Client'];
 
   const downloadCSV = (name, headers) => {
     const csv = headers.join(',') + '\n';
@@ -58,11 +58,11 @@ export default function RunPayroll() {
                 <input type="month" className="text-sm border rounded px-2 py-2" value={month} onChange={(e)=>setMonth(e.target.value)} />
               </div>
               <div></div>
-              <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+              <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
                 {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
               </select>
               <input className="text-sm border rounded px-2 py-2" placeholder="Department" value={department} onChange={(e)=>setDepartment(e.target.value)} />
-              <select className="text-sm border rounded px-2 py-2" value={workingFor} onChange={(e)=>setWorkingFor(e.target.value)}>
+              <select className="text-sm border rounded px-2 py-2 select-arrow" value={workingFor} onChange={(e)=>setWorkingFor(e.target.value)}>
                 <option value="">Working For</option>
                 {workingFors.map(w=> (<option key={w} value={w}>{w}</option>))}
               </select>
@@ -75,16 +75,43 @@ export default function RunPayroll() {
             </div>
 
             <div className="flex items-center gap-3">
-              <ActionBtn>New</ActionBtn>
-              <ActionBtn>Cancel</ActionBtn>
-              <ActionBtn>Compute</ActionBtn>
-              <ActionBtn>Upload OT Hours</ActionBtn>
+              <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">New</button>
+              <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">Cancel</button>
+              <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">Compute</button>
+              <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">Upload OT Hrs</button>
               <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('overtime_upload_template.csv',['Ecode','Month','OTHours'])}>Template</button>
             </div>
 
-            <div className="flex items-center gap-3 mt-4">
-              <ActionBtn>Reset</ActionBtn>
-              <button className="px-3 py-2 text-sm bg-green-600 text-white rounded">Save & Next</button>
+            <div className="mt-8 border-t pt-4">
+              <div className="grid grid-cols-5 gap-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">Month</span>
+                  <input type="month" className="text-sm border rounded px-2 py-2" value={month} onChange={(e)=>setMonth(e.target.value)} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">Company</span>
+                  <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
+                    {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
+                  </select>
+                </div>
+                <div>
+                  <div className="text-sm mb-1">Search On</div>
+                  <select className="text-sm border rounded px-2 py-2 w-full select-arrow"><option>All</option></select>
+                </div>
+                <div>
+                  <div className="text-sm mb-1">Search Text</div>
+                  <input className="text-sm border rounded px-2 py-2 w-full" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">Pg</span>
+                  <input className="text-sm border rounded px-2 py-2 w-16" />
+                  <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">➔</button>
+                  <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">🔎</button>
+                  <button className="px-3 py-2 text-sm border rounded">Logs</button>
+                  <button className="px-3 py-2 text-sm bg-green-600 text-white rounded">XLSX</button>
+                </div>
+              </div>
+              <div className="text-xs text-blue-700">Note : 1) Rows with green color indicates that salary for selected month is publish and you can not edit record</div>
             </div>
           </div>
         </div>

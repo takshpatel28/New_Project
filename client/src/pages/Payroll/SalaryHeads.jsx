@@ -28,7 +28,7 @@ export default function SalaryHeads() {
         <button className="px-3 py-2 text-sm bg-blue-600 text-white rounded">New</button>
         <button className="px-3 py-2 text-sm border rounded">Bulk Upload</button>
         <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('salary_heads_template.csv',['HeadName','HeadType','Category'])}>Template</button>
-        <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+        <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
           <option>Select a Company</option>
           <option>Company 1</option>
           <option>Company 2</option>

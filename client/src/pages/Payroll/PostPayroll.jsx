@@ -46,10 +46,10 @@ export default function PostPayroll() {
               <button className="px-3 py-2 text-sm bg-blue-600 text-white rounded">New</button>
               <button className="px-3 py-2 text-sm border rounded">Bulk Upload</button>
               <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('salary_stop_bulk_template.csv',['Ecode','Month','Status'])}>Template</button>
-              <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+              <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
                 {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
               </select>
-              <select className="text-sm border rounded px-2 py-2" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>
+              <select className="text-sm border rounded px-2 py-2 select-arrow" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>
                 {empStatuses.map(s=> (<option key={s} value={s}>{s}</option>))}
               </select>
               <label className="flex items-center gap-2 text-sm"><input type="radio" name="st" checked={status==='Stopped'} onChange={()=>setStatus('Stopped')} /> Stopped</label>

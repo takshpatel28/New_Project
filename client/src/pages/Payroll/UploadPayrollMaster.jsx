@@ -43,7 +43,7 @@ export default function UploadPayrollMaster() {
       <div className="bg-white border rounded-md">
         <div className="p-4 border-b flex items-center gap-3">
           <h1 className="text-lg font-semibold text-gray-800 flex-1">{label} / Upload</h1>
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={e => setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={e => setCompany(e.target.value)}>
             {companies.map(c => (<option key={c} value={c}>{c}</option>))}
           </select>
           <button className="px-3 py-2 text-sm border rounded" onClick={onTemplate}>Template</button>

@@ -39,7 +39,7 @@ export default function PreparePayroll() {
   const SalaryUpload = () => (
     <Section title="Upload Salary Master">
       <div className="flex items-center gap-3 mb-4">
-        <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+        <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
           {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
         </select>
         <label className="flex items-center gap-2 text-sm">
@@ -108,7 +108,7 @@ export default function PreparePayroll() {
     return (
       <Section title="Upload Variable Earnings/Deductions">
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <div></div>
@@ -155,9 +155,9 @@ export default function PreparePayroll() {
         <div className="flex items-center gap-3 mb-3">
           <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">New</button>
           <div className="text-sm">Emp Status</div>
-          <select className="text-sm border rounded px-2 py-2" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>{['CURRENT','LEFT'].map(v=> <option key={v}>{v}</option>)}</select>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>{['CURRENT','LEFT'].map(v=> <option key={v}>{v}</option>)}</select>
           <div className="text-sm">Search</div>
-          <select className="text-sm border rounded px-2 py-2" value={searchOn} onChange={(e)=>setSearchOn(e.target.value)}>{['All','Employee Name','Ecode'].map(v=> <option key={v}>{v}</option>)}</select>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={searchOn} onChange={(e)=>setSearchOn(e.target.value)}>{['All','Employee Name','Ecode'].map(v=> <option key={v}>{v}</option>)}</select>
           <div className="text-sm">Search Text</div>
           <input className="text-sm border rounded px-2 py-2 w-64" value={searchText} onChange={(e)=>setSearchText(e.target.value)} />
           <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">🔎</button>
@@ -174,7 +174,7 @@ export default function PreparePayroll() {
     return (
       <Section title="Upload Investment">
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <div className="flex items-center gap-6 text-sm">
@@ -209,7 +209,7 @@ export default function PreparePayroll() {
     return (
       <Section title="Upload Claims">
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <div className="flex items-center gap-2">
@@ -243,9 +243,9 @@ export default function PreparePayroll() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm">FY</span>
-            <select className="text-sm border rounded px-2 py-2" value={fy} onChange={(e)=>setFy(e.target.value)}>{['2024-2025','2025-2026'].map(v=> <option key={v}>{v}</option>)}</select>
+            <select className="text-sm border rounded px-2 py-2 select-arrow" value={fy} onChange={(e)=>setFy(e.target.value)}>{['2024-2025','2025-2026'].map(v=> <option key={v}>{v}</option>)}</select>
           </div>
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
         </div>
@@ -295,7 +295,7 @@ export default function PreparePayroll() {
             <span className="text-gray-700">Template</span>
             <button className="ml-2 text-blue-600" onClick={()=>downloadCSV('perquisites_upload_template.csv',['Ecode','HeadName','Amount','FY'])}>Sample Template</button>
           </div>
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <select className="text-sm border rounded px-2 py-2" value={fy} onChange={(e)=>setFy(e.target.value)}>{['2024-2025','2025-2026'].map(v=> <option key={v}>{v}</option>)}</select>
@@ -340,6 +340,72 @@ export default function PreparePayroll() {
     );
   };
 
+  const DeleteSalaryUpload = () => {
+    const [month, setMonth] = useState('');
+    const [empType, setEmpType] = useState('select');
+    const [delFile, setDelFile] = useState(null);
+    return (
+      <Section title="Upload Delete Salary">
+        <div className="grid grid-cols-4 gap-3 mb-4">
+          <div>
+            <div className="text-sm mb-1">Company</div>
+            <select className="text-sm border rounded px-2 py-2 w-full select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
+              {['Company 1','Company 2','Company 3'].map(c=> (<option key={c}>{c}</option>))}
+            </select>
+          </div>
+          <div>
+            <div className="text-sm mb-1">Activities</div>
+            <select className="text-sm border rounded px-2 py-2 w-full select-arrow" defaultValue="Delete Salary"><option>Delete Salary</option></select>
+          </div>
+          <div>
+            <div className="text-sm mb-1">Salary Month</div>
+            <input type="month" className="text-sm border rounded px-2 py-2 w-full" value={month} onChange={(e)=>setMonth(e.target.value)} />
+          </div>
+          <div>
+            <div className="text-sm mb-1">Employee Type</div>
+            <div className="flex items-center gap-4 text-sm">
+              <label className="flex items-center gap-2"><input type="radio" name="empType" checked={empType==='all'} onChange={()=>setEmpType('all')} /> All Employee</label>
+              <label className="flex items-center gap-2"><input type="radio" name="empType" checked={empType==='select'} onChange={()=>setEmpType('select')} /> Select Employee</label>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 mb-4">
+          <input type="file" onChange={(e)=>setDelFile(e.target.files?.[0]||null)} />
+          <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">⬇️</button>
+        </div>
+        <div className="flex items-center gap-3 mb-4">
+          <button className="px-3 py-2 text-sm bg-red-600 text-white rounded" disabled={!delFile}>Delete</button>
+          <button className="px-3 py-2 text-sm border rounded" onClick={()=>setDelFile(null)}>Cancel</button>
+          <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded" onClick={()=>downloadCSV('delete_salary_template.csv',['Ecode','Month'])}>Generate Template</button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm">
+            <thead>
+              <tr className="border-b bg-orange-50">
+                <th className="text-left px-3 py-2">UPLOADED FILE</th>
+                <th className="text-left px-3 py-2">LOG</th>
+                <th className="text-left px-3 py-2">UPLOADED ON</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                {file:'DeleteSalary81690.xls', log:'Log', date:'26-Oct-2025 22:31:02'},
+                {file:'delete salary Oct 25.xls', log:'Log', date:'26-Oct-2025 22:18:18'},
+                {file:'DeleteSalary.xls', log:'Log', date:'24-Oct-2025 15:02:31'},
+              ].map((r,i)=> (
+                <tr key={i} className="border-b">
+                  <td className="px-3 py-2">{r.file}</td>
+                  <td className="px-3 py-2">{r.log}</td>
+                  <td className="px-3 py-2">{r.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
+    );
+  };
+
   const SalaryStopBulk = () => {
     const [empStatus, setEmpStatus] = useState('CURRENT');
     const [searchOn, setSearchOn] = useState('Ecode');
@@ -354,10 +420,10 @@ export default function PreparePayroll() {
           <button className="px-3 py-2 text-sm bg-orange-500 text-white rounded">BulkUpload</button>
         </div>
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+            <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {['ALL','Company 1','Company 2','Company 3'].map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
-          <select className="text-sm border rounded px-2 py-2" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>{['CURRENT','LEFT'].map(v=> <option key={v}>{v}</option>)}</select>
+            <select className="text-sm border rounded px-2 py-2 select-arrow" value={empStatus} onChange={(e)=>setEmpStatus(e.target.value)}>{['CURRENT','LEFT'].map(v=> <option key={v}>{v}</option>)}</select>
           <div className="flex items-center gap-6 text-sm">
             <label className="flex items-center gap-2"><input type="radio" name="st" checked={status==='Stopped'} onChange={()=>setStatus('Stopped')} /> Stopped</label>
             <label className="flex items-center gap-2"><input type="radio" name="st" checked={status==='Released'} onChange={()=>setStatus('Released')} /> Released</label>
@@ -369,7 +435,7 @@ export default function PreparePayroll() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm">Search On</span>
-            <select className="text-sm border rounded px-2 py-2" value={searchOn} onChange={(e)=>setSearchOn(e.target.value)}>{['Ecode','Name'].map(v=> <option key={v}>{v}</option>)}</select>
+            <select className="text-sm border rounded px-2 py-2 select-arrow" value={searchOn} onChange={(e)=>setSearchOn(e.target.value)}>{['Ecode','Name'].map(v=> <option key={v}>{v}</option>)}</select>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm">Search By</span>
@@ -395,7 +461,7 @@ export default function PreparePayroll() {
     return (
       <Section title="Upload Perks">
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <div className="flex items-center gap-2">
@@ -421,7 +487,7 @@ export default function PreparePayroll() {
     return (
       <Section title="Upload Overtime">
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
+          <select className="text-sm border rounded px-2 py-2 select-arrow" value={company} onChange={(e)=>setCompany(e.target.value)}>
             {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
           </select>
           <div className="flex items-center gap-2">
@@ -461,6 +527,7 @@ export default function PreparePayroll() {
               {key:'perquisites',label:'7 Perquisites Upload'},
               {key:'dumpSalary',label:'8 Dump Salary Upload'},
               {key:'salaryStopBulk',label:'9 Salary Stop Bulk Upload'},
+              {key:'deleteSalary',label:'10 Delete Salary Upload'},
             ].map(i=> (
               <button key={i.key} className={`w-full px-3 py-2 text-sm rounded text-left border ${active===i.key?'bg-blue-50 border-blue-200 text-blue-700':'bg-white'}`} onClick={()=>setActive(i.key)}>{i.label}</button>
             ))}
@@ -478,6 +545,7 @@ export default function PreparePayroll() {
           {active==='perquisites' && <PerquisitesUpload />}
           {active==='dumpSalary' && <DumpSalaryUpload />}
           {active==='salaryStopBulk' && <SalaryStopBulk />}
+          {active==='deleteSalary' && <DeleteSalaryUpload />}
         </div>
       </div>
     </div>
