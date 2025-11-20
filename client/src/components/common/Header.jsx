@@ -8,6 +8,7 @@ const Header = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [hoveredELC, setHoveredELC] = useState(false);
   const [hoveredTALV, setHoveredTALV] = useState(false);
+  const [hoveredPayroll, setHoveredPayroll] = useState(false);
 
   const menuItems = {
     Master: {
@@ -105,12 +106,66 @@ const Header = () => {
     }
   };
 
+  const payrollCountries = [
+    { key: 'india', label: 'India' },
+    { key: 'nepal', label: 'Nepal' },
+    { key: 'bangladesh', label: 'Bangladesh' },
+    { key: 'srilanka', label: 'Sri Lanka' },
+  ];
+  const payrollMenus = [
+    { key: 'config', label: 'Payroll Config' },
+    { key: 'salary-heads', label: 'Salary heads' },
+    { key: 'statutory-settings', label: 'Statutory Settings' },
+    { key: 'prepare', label: 'Prepare Payroll' },
+    { key: 'run', label: 'Run Payroll' },
+    { key: 'post', label: 'Post Payroll' },
+    { key: 'dashboard', label: 'Dashboard' },
+    { key: 'upload', label: 'Upload' },
+  ];
+
   return (
     <header className="bg-white px-4 py-3 flex justify-between items-center relative">
       <Link to="/home" className="no-underline text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors">
         Dash Board
       </Link>
       <div className="flex items-center space-x-6 text-gray-700">
+        {/* Payroll Menu */}
+        <div className="relative">
+          <div
+            className="cursor-pointer hover:text-blue-600"
+            onMouseEnter={() => setHoveredPayroll(true)}
+            onMouseLeave={() => setHoveredPayroll(false)}
+          >
+            Payroll ▼
+          </div>
+          {hoveredPayroll && (
+            <div
+              className="absolute top-full left-0 bg-white shadow-sm rounded-md py-2 w-56 z-10 border border-gray-200"
+              onMouseEnter={() => setHoveredPayroll(true)}
+              onMouseLeave={() => setHoveredPayroll(false)}
+            >
+              {payrollCountries.map((c) => (
+                <div key={c.key} className="relative group">
+                  <div className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm flex justify-between items-center">
+                    {c.label}
+                    <span className="text-xs text-gray-400">▶</span>
+                  </div>
+                  <div className="absolute left-full top-0 bg-white shadow-sm rounded-md py-2 w-56 z-20 border border-gray-200 hidden group-hover:block">
+                    {payrollMenus.map((m) => (
+                      <div
+                        key={m.key}
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm"
+                        onClick={() => navigate(`/payroll/${c.key}/${m.key}`)}
+                      >
+                        {m.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         {/* Master Menu with Hover */}
         <div className="relative">
           <div 

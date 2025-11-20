@@ -39,7 +39,6 @@ import AddEmployee from './pages/EmployeeMaster/AddEmployee';
 import UploadEmpMasterUpdate from './pages/UploadEmpMasterUpdate/UploadEmpMasterUpdate';
 import ReportingFinanceManagerMapping from './pages/ReportingFinanceManagerMapping/ReportingFinanceManagerMapping';
 import AddReportingFinanceMapping from './pages/ReportingFinanceManagerMapping/AddReportingFinanceMapping';
-import SidebarNeeds from './components/common/SidebarNeeds';
 import NeedsPage from './pages/Needs/NeedsPage';
 import Vendor from './pages/Needs/Vendor';
 import CVStatus from './pages/Needs/CVStatus';
@@ -91,7 +90,6 @@ function App() {
       <Header />
       <main className="main-content min-h-screen bg-gray-50">
         <div className="flex">
-          <SidebarNeeds />
           <div className="flex-1">
             <Routes>
               {/* Main Routes */}
@@ -182,15 +180,15 @@ function App() {
               <Route path="/needs/talent-acquisition-approval" element={<TalentAcquisitionApproval />} />
               <Route path="/needs/talent-acquisition-manager-approval" element={<TalentAcquisitionManagerApproval />} />
               <Route path="/needs/hr-view-talent-acquisitions" element={<HRViewTalentAcquisitions />} />
-              {/* India Payroll Routes */}
-              <Route path="/payroll/india/upload" element={<UploadPayrollMaster />} />
-              <Route path="/payroll/india/config" element={<PayrollConfig />} />
-              <Route path="/payroll/india/salary-heads" element={<SalaryHeads />} />
-              <Route path="/payroll/india/statutory-settings" element={<StatutorySettings />} />
-              <Route path="/payroll/india/prepare" element={<PreparePayroll />} />
-              <Route path="/payroll/india/run" element={<RunPayroll />} />
-              <Route path="/payroll/india/post" element={<PostPayroll />} />
-              <Route path="/payroll/india/dashboard" element={<PayrollDashboard />} />
+              {/* Payroll Routes */}
+              <Route path="/payroll/:country/upload" element={<UploadPayrollMaster />} />
+              <Route path="/payroll/:country/config" element={<PayrollConfig />} />
+              <Route path="/payroll/:country/salary-heads" element={<SalaryHeads />} />
+              <Route path="/payroll/:country/statutory-settings" element={<StatutorySettings />} />
+              <Route path="/payroll/:country/prepare" element={<PreparePayroll />} />
+              <Route path="/payroll/:country/run" element={<RunPayroll />} />
+              <Route path="/payroll/:country/post" element={<PostPayroll />} />
+              <Route path="/payroll/:country/dashboard" element={<PayrollDashboard />} />
 
               <Route path="/talv/attendance-dashboard" element={<AttendanceDashboard />} />
               <Route path="/talv/attendance-policy" element={<AttendancePolicyMaster />} />

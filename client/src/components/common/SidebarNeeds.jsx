@@ -18,6 +18,9 @@ export default function SidebarNeeds() {
   const location = useLocation();
   const [openPosition, setOpenPosition] = useState(false);
   const [openIndiaPayroll, setOpenIndiaPayroll] = useState(false);
+  const [openNepalPayroll, setOpenNepalPayroll] = useState(false);
+  const [openBangladeshPayroll, setOpenBangladeshPayroll] = useState(false);
+  const [openSriLankaPayroll, setOpenSriLankaPayroll] = useState(false);
 
   const items = [
     // Position group is now a dropdown; its children are defined below
@@ -106,6 +109,84 @@ export default function SidebarNeeds() {
                 <NeedsItem label="Post Payroll" to="/payroll/india/post" icon="⚙️" active={location.pathname === '/payroll/india/post'} onClick={() => navigate('/payroll/india/post')} />
                 <NeedsItem label="Dashboard" to="/payroll/india/dashboard" icon="⚙️" active={location.pathname === '/payroll/india/dashboard'} onClick={() => navigate('/payroll/india/dashboard')} />
                 <NeedsItem label="Upload" to="/payroll/india/upload" icon="⤴️" active={location.pathname === '/payroll/india/upload'} onClick={() => navigate('/payroll/india/upload')} />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <button
+              onClick={() => setOpenNepalPayroll(v => !v)}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-sm rounded-md border transition-colors ${
+                openNepalPayroll ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-700'
+              }`}
+            >
+              <span className="text-base">🇳🇵</span>
+              <span className="text-left flex-1">Nepal Payroll</span>
+              <span className="text-xs">{openNepalPayroll ? '▾' : '▸'}</span>
+            </button>
+            {openNepalPayroll && (
+              <div className="mt-2 space-y-1 pl-8">
+                <div className="text-xs text-gray-500 mb-1">Master</div>
+                <NeedsItem label="Payroll Config" to="/payroll/nepal/config" icon="⚙️" active={location.pathname === '/payroll/nepal/config'} onClick={() => navigate('/payroll/nepal/config')} />
+                <NeedsItem label="Salary heads" to="/payroll/nepal/salary-heads" icon="⚙️" active={location.pathname === '/payroll/nepal/salary-heads'} onClick={() => navigate('/payroll/nepal/salary-heads')} />
+                <NeedsItem label="Statutory Settings" to="/payroll/nepal/statutory-settings" icon="⚙️" active={location.pathname === '/payroll/nepal/statutory-settings'} onClick={() => navigate('/payroll/nepal/statutory-settings')} />
+                <NeedsItem label="Prepare Payroll" to="/payroll/nepal/prepare" icon="⚙️" active={location.pathname === '/payroll/nepal/prepare'} onClick={() => navigate('/payroll/nepal/prepare')} />
+                <NeedsItem label="Run Payroll" to="/payroll/nepal/run" icon="⚙️" active={location.pathname === '/payroll/nepal/run'} onClick={() => navigate('/payroll/nepal/run')} />
+                <NeedsItem label="Post Payroll" to="/payroll/nepal/post" icon="⚙️" active={location.pathname === '/payroll/nepal/post'} onClick={() => navigate('/payroll/nepal/post')} />
+                <NeedsItem label="Dashboard" to="/payroll/nepal/dashboard" icon="⚙️" active={location.pathname === '/payroll/nepal/dashboard'} onClick={() => navigate('/payroll/nepal/dashboard')} />
+                <NeedsItem label="Upload" to="/payroll/nepal/upload" icon="⤴️" active={location.pathname === '/payroll/nepal/upload'} onClick={() => navigate('/payroll/nepal/upload')} />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <button
+              onClick={() => setOpenBangladeshPayroll(v => !v)}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-sm rounded-md border transition-colors ${
+                openBangladeshPayroll ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-700'
+              }`}
+            >
+              <span className="text-base">🇧🇩</span>
+              <span className="text-left flex-1">Bangladesh Payroll</span>
+              <span className="text-xs">{openBangladeshPayroll ? '▾' : '▸'}</span>
+            </button>
+            {openBangladeshPayroll && (
+              <div className="mt-2 space-y-1 pl-8">
+                <div className="text-xs text-gray-500 mb-1">Master</div>
+                <NeedsItem label="Payroll Config" to="/payroll/bangladesh/config" icon="⚙️" active={location.pathname === '/payroll/bangladesh/config'} onClick={() => navigate('/payroll/bangladesh/config')} />
+                <NeedsItem label="Salary heads" to="/payroll/bangladesh/salary-heads" icon="⚙️" active={location.pathname === '/payroll/bangladesh/salary-heads'} onClick={() => navigate('/payroll/bangladesh/salary-heads')} />
+                <NeedsItem label="Statutory Settings" to="/payroll/bangladesh/statutory-settings" icon="⚙️" active={location.pathname === '/payroll/bangladesh/statutory-settings'} onClick={() => navigate('/payroll/bangladesh/statutory-settings')} />
+                <NeedsItem label="Prepare Payroll" to="/payroll/bangladesh/prepare" icon="⚙️" active={location.pathname === '/payroll/bangladesh/prepare'} onClick={() => navigate('/payroll/bangladesh/prepare')} />
+                <NeedsItem label="Run Payroll" to="/payroll/bangladesh/run" icon="⚙️" active={location.pathname === '/payroll/bangladesh/run'} onClick={() => navigate('/payroll/bangladesh/run')} />
+                <NeedsItem label="Post Payroll" to="/payroll/bangladesh/post" icon="⚙️" active={location.pathname === '/payroll/bangladesh/post'} onClick={() => navigate('/payroll/bangladesh/post')} />
+                <NeedsItem label="Dashboard" to="/payroll/bangladesh/dashboard" icon="⚙️" active={location.pathname === '/payroll/bangladesh/dashboard'} onClick={() => navigate('/payroll/bangladesh/dashboard')} />
+                <NeedsItem label="Upload" to="/payroll/bangladesh/upload" icon="⤴️" active={location.pathname === '/payroll/bangladesh/upload'} onClick={() => navigate('/payroll/bangladesh/upload')} />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <button
+              onClick={() => setOpenSriLankaPayroll(v => !v)}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-sm rounded-md border transition-colors ${
+                openSriLankaPayroll ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-700'
+              }`}
+            >
+              <span className="text-base">🇱🇰</span>
+              <span className="text-left flex-1">Sri Lanka Payroll</span>
+              <span className="text-xs">{openSriLankaPayroll ? '▾' : '▸'}</span>
+            </button>
+            {openSriLankaPayroll && (
+              <div className="mt-2 space-y-1 pl-8">
+                <div className="text-xs text-gray-500 mb-1">Master</div>
+                <NeedsItem label="Payroll Config" to="/payroll/srilanka/config" icon="⚙️" active={location.pathname === '/payroll/srilanka/config'} onClick={() => navigate('/payroll/srilanka/config')} />
+                <NeedsItem label="Salary heads" to="/payroll/srilanka/salary-heads" icon="⚙️" active={location.pathname === '/payroll/srilanka/salary-heads'} onClick={() => navigate('/payroll/srilanka/salary-heads')} />
+                <NeedsItem label="Statutory Settings" to="/payroll/srilanka/statutory-settings" icon="⚙️" active={location.pathname === '/payroll/srilanka/statutory-settings'} onClick={() => navigate('/payroll/srilanka/statutory-settings')} />
+                <NeedsItem label="Prepare Payroll" to="/payroll/srilanka/prepare" icon="⚙️" active={location.pathname === '/payroll/srilanka/prepare'} onClick={() => navigate('/payroll/srilanka/prepare')} />
+                <NeedsItem label="Run Payroll" to="/payroll/srilanka/run" icon="⚙️" active={location.pathname === '/payroll/srilanka/run'} onClick={() => navigate('/payroll/srilanka/run')} />
+                <NeedsItem label="Post Payroll" to="/payroll/srilanka/post" icon="⚙️" active={location.pathname === '/payroll/srilanka/post'} onClick={() => navigate('/payroll/srilanka/post')} />
+                <NeedsItem label="Dashboard" to="/payroll/srilanka/dashboard" icon="⚙️" active={location.pathname === '/payroll/srilanka/dashboard'} onClick={() => navigate('/payroll/srilanka/dashboard')} />
+                <NeedsItem label="Upload" to="/payroll/srilanka/upload" icon="⤴️" active={location.pathname === '/payroll/srilanka/upload'} onClick={() => navigate('/payroll/srilanka/upload')} />
               </div>
             )}
           </div>

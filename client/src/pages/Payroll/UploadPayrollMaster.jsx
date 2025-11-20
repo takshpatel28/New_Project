@@ -1,10 +1,14 @@
 import React, { useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function UploadPayrollMaster() {
   const [company, setCompany] = useState('Company 1');
   const [file, setFile] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const inputRef = useRef(null);
+  const { country } = useParams();
+  const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
+  const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
   const companies = ['Company 1', 'Company 2', 'Company 3'];
 
@@ -34,7 +38,7 @@ export default function UploadPayrollMaster() {
     <div className="p-4">
       <div className="bg-white border rounded-md">
         <div className="p-4 border-b flex items-center gap-3">
-          <h1 className="text-lg font-semibold text-gray-800 flex-1">India Payroll / Upload</h1>
+          <h1 className="text-lg font-semibold text-gray-800 flex-1">{label} / Upload</h1>
           <select className="text-sm border rounded px-2 py-2" value={company} onChange={e => setCompany(e.target.value)}>
             {companies.map(c => (<option key={c} value={c}>{c}</option>))}
           </select>

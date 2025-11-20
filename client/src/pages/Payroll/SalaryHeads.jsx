@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function SalaryHeads() {
   const [active, setActive] = useState('earning');
   const [company, setCompany] = useState('Select a Company');
+  const { country } = useParams();
+  const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
+  const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
   const Section = ({ title }) => (
     <div className="p-6 rounded border bg-gray-50">
@@ -27,7 +31,7 @@ export default function SalaryHeads() {
     <div className="p-4">
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-3">
-          <div className="text-sm text-gray-800 mb-2">India Payroll</div>
+          <div className="text-sm text-gray-800 mb-2">{label}</div>
           <div className="text-xs text-gray-500 mb-2">Master</div>
           <div className="space-y-2">
             <button className={`w-full px-3 py-2 text-sm rounded text-left border ${active==='earning'?'bg-blue-50 border-blue-200 text-blue-700':'bg-white'}`} onClick={()=>setActive('earning')}>1 Earning Head Master</button>

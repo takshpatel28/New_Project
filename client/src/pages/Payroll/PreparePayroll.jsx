@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function PreparePayroll() {
   const [company, setCompany] = useState('Company 1');
@@ -6,6 +7,9 @@ export default function PreparePayroll() {
   const [file, setFile] = useState(null);
   const inputRef = useRef(null);
   const [active, setActive] = useState('salary');
+  const { country } = useParams();
+  const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
+  const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
   const companies = ['Company 1','Company 2','Company 3'];
 
@@ -19,7 +23,7 @@ export default function PreparePayroll() {
     <div className="p-4">
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-3">
-          <div className="text-sm text-gray-800 mb-2">India Payroll</div>
+          <div className="text-sm text-gray-800 mb-2">{label}</div>
           <div className="text-xs text-gray-500 mb-2">Master</div>
           <div className="space-y-2">
             {[

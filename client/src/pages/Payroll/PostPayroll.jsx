@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function PostPayroll() {
   const [active, setActive] = useState('stop');
@@ -6,6 +7,9 @@ export default function PostPayroll() {
   const [empStatus, setEmpStatus] = useState('All');
   const [status, setStatus] = useState('Stopped');
   const [month, setMonth] = useState('');
+  const { country } = useParams();
+  const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
+  const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
   const companies = ['Company 1','Company 2','Company 3'];
   const empStatuses = ['All','Active','Inactive'];
@@ -14,7 +18,7 @@ export default function PostPayroll() {
     <div className="p-4">
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-3">
-          <div className="text-sm text-gray-800 mb-2">India Payroll</div>
+          <div className="text-sm text-gray-800 mb-2">{label}</div>
           <div className="text-xs text-gray-500 mb-2">Master</div>
           <div className="space-y-2">
             <button className={`w-full px-3 py-2 text-sm rounded text-left border ${active==='stop'?'bg-blue-50 border-blue-200 text-blue-700':'bg-white'}`} onClick={()=>setActive('stop')}>1 Salary Stop</button>
