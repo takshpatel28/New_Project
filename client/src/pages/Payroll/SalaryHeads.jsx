@@ -8,6 +8,16 @@ export default function SalaryHeads() {
   const map = { india: 'India', nepal: 'Nepal', bangladesh: 'Bangladesh', srilanka: 'Sri Lanka' };
   const label = `${map[(country||'india').toLowerCase()]||'India'} Payroll`;
 
+  const downloadCSV = (name, headers) => {
+    const csv = headers.join(',') + '\n';
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
   const Section = ({ title }) => (
     <div className="p-6 rounded border bg-gray-50">
       <div className="flex items-center justify-between mb-4">
@@ -17,6 +27,7 @@ export default function SalaryHeads() {
       <div className="flex items-center gap-3">
         <button className="px-3 py-2 text-sm bg-blue-600 text-white rounded">New</button>
         <button className="px-3 py-2 text-sm border rounded">Bulk Upload</button>
+        <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('salary_heads_template.csv',['HeadName','HeadType','Category'])}>Template</button>
         <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
           <option>Select a Company</option>
           <option>Company 1</option>

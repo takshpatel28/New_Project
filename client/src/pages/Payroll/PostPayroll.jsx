@@ -14,6 +14,16 @@ export default function PostPayroll() {
   const companies = ['Company 1','Company 2','Company 3'];
   const empStatuses = ['All','Active','Inactive'];
 
+  const downloadCSV = (name, headers) => {
+    const csv = headers.join(',') + '\n';
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
   return (
     <div className="p-4">
       <div className="grid grid-cols-12 gap-4">
@@ -35,6 +45,7 @@ export default function PostPayroll() {
             <div className="flex items-center gap-3 mb-4">
               <button className="px-3 py-2 text-sm bg-blue-600 text-white rounded">New</button>
               <button className="px-3 py-2 text-sm border rounded">Bulk Upload</button>
+              <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('salary_stop_bulk_template.csv',['Ecode','Month','Status'])}>Template</button>
               <select className="text-sm border rounded px-2 py-2" value={company} onChange={(e)=>setCompany(e.target.value)}>
                 {companies.map(c=> (<option key={c} value={c}>{c}</option>))}
               </select>

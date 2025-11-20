@@ -116,7 +116,7 @@ const Header = () => {
     { key: 'config', label: 'Payroll Config' },
     { key: 'salary-heads', label: 'Salary heads' },
     { key: 'statutory-settings', label: 'Statutory Settings' },
-    { key: 'prepare', label: 'Prepare Payroll' },
+    { key: 'prepare', label: 'Upload Menu' },
     { key: 'run', label: 'Run Payroll' },
     { key: 'post', label: 'Post Payroll' },
     { key: 'dashboard', label: 'Dashboard' },

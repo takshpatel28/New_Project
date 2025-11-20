@@ -18,6 +18,16 @@ export default function RunPayroll() {
   const companies = ['Company 1','Company 2'];
   const workingFors = ['Self','Client'];
 
+  const downloadCSV = (name, headers) => {
+    const csv = headers.join(',') + '\n';
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
   const ActionBtn = ({ children }) => (
     <button className="px-3 py-2 text-sm border rounded">{children}</button>
   );
@@ -69,6 +79,7 @@ export default function RunPayroll() {
               <ActionBtn>Cancel</ActionBtn>
               <ActionBtn>Compute</ActionBtn>
               <ActionBtn>Upload OT Hours</ActionBtn>
+              <button className="px-3 py-2 text-sm border rounded" onClick={()=>downloadCSV('overtime_upload_template.csv',['Ecode','Month','OTHours'])}>Template</button>
             </div>
 
             <div className="flex items-center gap-3 mt-4">

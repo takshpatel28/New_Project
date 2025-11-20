@@ -14,9 +14,13 @@ export default function UploadPayrollMaster() {
 
   const onTemplate = () => {
     const headers = ['Emp Code','Emp Name','Department','Designation','Pay Group','CTC','Effective From'];
-    const csv = headers.join(',');
-    navigator.clipboard.writeText(csv).catch(() => {});
-    alert('Payroll upload template headers copied');
+    const csv = headers.join(',') + '\n';
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'payroll_master_upload_template.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
   };
 
   const onDrop = (e) => {
