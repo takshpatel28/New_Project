@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/common/Header';
 import Dashboard from './pages/Dashboard';
+import EmployeeSelfService from './pages/ESS/EmployeeSelfService';
+import EmployeeMIS from './pages/EmployeeMIS';
 import CompanyMaster from './components/company/CompanyMaster';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -96,6 +98,8 @@ function App() {
               <Route path="/" element={<Navigate to="/home" replace />} />
               <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/employee-self-service" element={<EmployeeSelfService />} />
+              <Route path="/employee-mis" element={<EmployeeMIS />} />
               <Route path="/companies" element={<CompanyMaster />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />

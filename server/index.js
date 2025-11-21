@@ -13,6 +13,9 @@ app.use(cors());
 
 app.get('/', (req, res) => res.send('API Running'));
 
+// Routes
+app.use('/api/employee', require('./routes/employeeMIS'));
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
