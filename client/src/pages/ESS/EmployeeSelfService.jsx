@@ -37,7 +37,9 @@ const EmployeeSelfService = () => {
     { key: 'employeeBenefit', icon: '🎁', label: 'Employee Benefit' },
     { key: 'onboarding', icon: '📦', label: 'Onboarding' },
   ];
-  const [open, setOpen] = useState({ links: true, profile: true, myAttendance: true, teamAttendance: true });
+  const [open, setOpen] = useState({ links: false, profile: false, myAttendance: false, teamAttendance: false });
+  const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const [activeView, setActiveView] = useState('ess-dashboard');
 
   
   return (
@@ -64,11 +66,18 @@ const EmployeeSelfService = () => {
               </button>
               {s.children && open[s.key] && (
                 <div className="px-4 pb-3">
-                  {s.children.map((c) => (
-                    <button key={c} className="block w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded">
-                      {c}
-                    </button>
-                  ))}
+                  {s.children.map((c) => {
+                    const k = `${s.key}-${slug(c)}`;
+                    return (
+                      <button
+                        key={c}
+                        className={`block w-full text-left px-2 py-2 text-sm rounded ${activeView===k?'bg-orange-500 text-white':'text-gray-700 hover:bg-gray-50'}`}
+                        onClick={() => setActiveView(k)}
+                      >
+                        {c}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -76,7 +85,9 @@ const EmployeeSelfService = () => {
             </div>
           </aside>
           <div className="flex-1">
-            <div className="text-2xl font-semibold text-gray-900 mb-4">HR Self Service</div>
+            <div className="text-2xl font-semibold text-gray-900 mb-4">{activeView==='ess-dashboard' ? 'HR Self Service' : ''}</div>
+            {activeView==='ess-dashboard' && (
+            <div style={{display: activeView==='ess-dashboard' ? 'block':'none'}}>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
         {[
@@ -184,6 +195,131 @@ const EmployeeSelfService = () => {
           </div>
         </div>
             </div>
+            </div>
+            )}
+
+            {activeView==='links-my-leave-report' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">My Leave Report</span></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+                  <div>
+                    <div className="text-sm">From Date</div>
+                    <input type="date" className="border rounded px-2 py-2 w-full text-sm" defaultValue={new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().slice(0,10)} />
+                  </div>
+                  <div>
+                    <div className="text-sm">To Date</div>
+                    <input type="date" className="border rounded px-2 py-2 w-full text-sm" defaultValue={new Date().toISOString().slice(0,10)} />
+                  </div>
+                  <div>
+                    <div className="text-sm">Select Format</div>
+                    <div className="flex items-center gap-4 text-sm">
+                      <label className="flex items-center gap-2"><input type="radio" name="fmt" defaultChecked /> EXCEL</label>
+                      <label className="flex items-center gap-2"><input type="radio" name="fmt" /> PDF</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm">Sort By</div>
+                    <label className="flex items-center gap-2 text-sm"><input type="radio" name="sort" defaultChecked /> Leave Date</label>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="md:col-span-2">
+                    <div className="text-sm">Leave Type</div>
+                    <select multiple className="border rounded px-2 py-2 w-full h-40 text-sm">
+                      {['Absent','L.W.P','Casual Leave','Compensatory Off','Extra Working'].map((o)=>(<option key={o}>{o}</option>))}
+                    </select>
+                  </div>
+                  <div className="flex items-start">
+                    <button className="px-4 py-2 bg-green-600 text-white rounded text-sm">Export Excel</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeView==='links-my-activity-update' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">My Activity Update</span></div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                  <div>
+                    <div className="text-sm">Process</div>
+                    <select className="border rounded px-2 py-2 w-full text-sm"><option>– Select –</option></select>
+                  </div>
+                  <div>
+                    <div className="text-sm">Search</div>
+                    <select className="border rounded px-2 py-2 w-full text-sm"><option>– Select –</option></select>
+                  </div>
+                  <div>
+                    <div className="text-sm">Search Text</div>
+                    <input className="border rounded px-2 py-2 w-full text-sm" />
+                  </div>
+                  <div className="flex items-end"><button className="px-4 py-2 bg-orange-500 text-white rounded text-sm">Search</button></div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <button className="px-3 py-2 rounded bg-blue-500 text-white text-sm">Assigned</button>
+                  <button className="px-3 py-2 rounded bg-green-500 text-white text-sm">Completed</button>
+                  <button className="px-3 py-2 rounded bg-orange-500 text-white text-sm">Request Cancelled</button>
+                  <button className="px-3 py-2 rounded border text-sm">All</button>
+                </div>
+                <div className="mt-8 text-gray-600 text-sm">There are no details.</div>
+              </div>
+            )}
+
+            {activeView==='links-asset-allocated' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">Asset Allocated</span></div>
+                <div className="flex gap-3">
+                  <button className="px-4 py-2 rounded bg-blue-500 text-white text-sm">Pending to Submit</button>
+                  <button className="px-4 py-2 rounded bg-orange-400 text-white text-sm">Submitted</button>
+                </div>
+                <div className="mt-8 text-gray-600 text-sm">There are no asset allotted</div>
+              </div>
+            )}
+
+            {activeView==='links-view-my-process-activities' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">View My Process Activities</span></div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                  <div>
+                    <div className="text-sm">Process</div>
+                    <select className="border rounded px-2 py-2 w-full text-sm"><option>– Select –</option></select>
+                  </div>
+                  <div>
+                    <div className="text-sm">Search</div>
+                    <select className="border rounded px-2 py-2 w-full text-sm"><option>– Select –</option></select>
+                  </div>
+                  <div>
+                    <div className="text-sm">Search Text</div>
+                    <input className="border rounded px-2 py-2 w-full text-sm" />
+                  </div>
+                  <div className="flex items-end"><button className="px-4 py-2 bg-orange-500 text-white rounded text-sm">Search</button></div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <button className="px-3 py-2 rounded bg-blue-500 text-white text-sm">Assigned To Owner</button>
+                  <button className="px-3 py-2 rounded bg-orange-400 text-white text-sm">Completed</button>
+                  <button className="px-3 py-2 rounded border text-sm">All</button>
+                </div>
+                <div className="mt-8 text-gray-600 text-sm">There are no details.</div>
+              </div>
+            )}
+
+            {activeView==='links-my-form16' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">My Form16</span></div>
+                <div className="text-gray-600 text-sm">No data found.</div>
+              </div>
+            )}
+
+            {activeView==='links-remarks' && (
+              <div className="card-soft">
+                <div className="text-sm mb-4">My Links › <span className="font-medium">Remarks</span></div>
+                <div className="flex gap-3">
+                  <button className="px-4 py-2 rounded bg-orange-400 text-white text-sm">Remarks</button>
+                  <button className="px-4 py-2 rounded bg-red-500 text-white text-sm">Warning</button>
+                  <button className="px-4 py-2 rounded border text-sm">⟳</button>
+                </div>
+                <div className="mt-8 text-gray-600 text-sm">No data found.</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
