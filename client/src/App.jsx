@@ -98,7 +98,7 @@ function App() {
               <Route path="/" element={<Navigate to="/home" replace />} />
               <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/employee-self-service" element={<EmployeeSelfService />} />
+              <Route path="/employee-self-service/*" element={<EmployeeSelfService />} />
               <Route path="/employee-mis" element={<EmployeeMIS />} />
               <Route path="/companies" element={<CompanyMaster />} />
               <Route path="/about" element={<About />} />
